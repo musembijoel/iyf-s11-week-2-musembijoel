@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Responsive Contact Form</title>
+    <style>
+        /* Global Brand Tokens & Reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --color-bg: #f8fafc;
+            --color-surface: #ffffff;
+            --color-text: #0f172a;
+            --color-muted: #64748b;
+            --color-primary: #2563eb;
+            --color-primary-hover: #1d4ed8;
+            --color-border: #cbd5e1;
+            
+            /* Status Feedback Tokens */
+            --color-error: #dc2626;
+            --color-error-bg: #fef2f2;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* =================================================================
+           THE CONTACT FORM CARD COMPONENT
+        ==================================================================== */
+        .contact-card {
+            background-color: var(--color-surface);
+            width: 100%;
+            max-width: 480px; /* Clamps elegantly on desktop */
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-header {
+            margin-bottom: 24px;
+        }
+
+        .form-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 6px;
+        }
+
+        .form-header p {
+            font-size: 0.925rem;
+            color: var(--color-muted);
+        }
+
+        /* Form Layout Groups */
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 6px;
+        }
+
+        /* =================================================================
+           CUSTOM INPUT STYLES & INTERACTIVE STATES
+        ==================================================================== */
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 1rem;
+            font-family: inherit;
+            color: var(--color-text);
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            transition: all 0.25s ease;
+        }
+
+        .form-group textarea {
+            resize: vertical; /* Prevents breaking horizontal container track geometry */
+            min-height: 120px;
+        }
+
+        /* 1. FOCUS STATE: Clean highlight halo ring */
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+        }
+
+        /* 2. ERROR STATE (:invalid magic combo)
+           Triggers ONLY when input is invalid AND user has stopped typing/cleared placeholder */
+        .form-group input:not(:placeholder-shown):invalid,
+        .form-group textarea:not(:placeholder-shown):invalid {
+            border-color: var(--color-error);
+            background-color: var(--color-error-bg);
+        }
+
+        /* Focus override on invalid values to give users clear guidance */
+        .form-group input:not(:placeholder-shown):invalid:focus,
+        .form-group textarea:not(:placeholder-shown):invalid:focus {
+            box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.15);
+        }
+
+        /* Dynamic Error Message Hint Display */
+        .error-hint {
+            display: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--color-error);
+            margin-top: 4px;
+        }
+
+        /* Shows error message target when layout goes to invalid state */
+        .form-group input:not(:placeholder-shown):invalid ~ .error-hint,
+        .form-group textarea:not(:placeholder-shown):invalid ~ .error-hint {
+            display: block;
+        }
+
+        /* =================================================================
+           SUBMIT ACTION BUTTON
+        ==================================================================== */
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--color-primary);
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--color-primary-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 12px -1px rgba(37, 99, 235, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:focus-visible {
+            outline: 2px solid var(--color-text);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="contact-card">
+        
+        <div class="form-header">
+            <h2>Get in Touch</h2>
+            <p>Drop a line! Response turnarounds average under 24 hours.</p>
+        </div>
+
+        <form onsubmit="event.preventDefault(); alert('Form submitted successfully (simulation)!');">
+            
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder=" " required minlength="2">
+                <span class="error-hint">Please tell me your name so I know who I'm talking to!</span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder=" " required>
+                <span class="error-hint">Please enter a valid email address (e.g., name@domain.com).</span>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea id="message" placeholder=" " required minlength="10"></textarea>
+                <span class="error-hint">Messages must be at least 10 characters long.</span>
+            </div>
+
+            <button type="submit" class="submit-btn">Send Message</button>
+
+        </form>
+
+    </main>
+
+</body>
+</html>
