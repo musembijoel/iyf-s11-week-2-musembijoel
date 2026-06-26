@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Component</title>
+    <style>
+        /* Global reset to guarantee exact pixel math */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* THE CARD COMPONENT */
+        .card {
+            width: 300px;              /* Exact total width requested */
+            padding: 20px;             /* Exact padding requested */
+            border: 1px solid gray;    /* Exact border requested */
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;          /* Keeps image corners clean */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Full-width Top Image */
+        .card-image {
+            width: calc(100% + 40px);  /* Spans full width by adding back the left/right padding */
+            margin-top: -20px;         /* Pulls image up to negate top padding */
+            margin-left: -20px;        /* Pulls image left to negate left padding */
+            margin-right: -20px;       /* Pulls image right to negate right padding */
+            height: 160px;
+            object-fit: cover;         /* Prevents image distortion */
+            display: block;
+        }
+
+        /* Card Title */
+        .card-title {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-top: 20px;          /* Space between image and title */
+            margin-bottom: 15px;       /* Exact 15px margin-bottom requested */
+        }
+
+        /* Description Text */
+        .card-description {
+            font-size: 0.95rem;
+            color: #555555;
+            line-height: 1.5;
+            margin-bottom: 20px;       /* Space before the button */
+        }
+
+        /* Action Button */
+        .card-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.2s ease;
+        }
+
+        .card-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <article class="card">
+        <img class="card-image" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500" alt="Card Header">
+        
+        <h2 class="card-title">Explore the World</h2>
+        
+        <p class="card-description">
+            Discover breathtaking destinations, unlock hidden local gems, and plan your next unforgettable adventure today.
+        </p>
+        
+        <button class="card-button">Read More</button>
+    </article>
+
+</body>
+</html>
