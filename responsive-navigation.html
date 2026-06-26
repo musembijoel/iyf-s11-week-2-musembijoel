@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Portfolio System</title>
+    <style>
+        /* =================================================================
+           1. GLOBAL RESET & BASE BRAND TOKENS
+        ==================================================================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            color: #1e293b;
+            font-weight: 700;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        /* =================================================================
+           2. MOBILE-FIRST BASE STYLES (Default / Mobile Viewports < 768px)
+        ==================================================================== */
+        
+        /* HEADER & NAVIGATION (CSS-Only Mobile Menu) */
+        header {
+            background-color: #022a3a;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        /* Hide the checkbox toggle visually */
+        #menu-toggle {
+            display: none;
+        }
+
+        /* Hamburger Icon Layout */
+        .menu-button {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .menu-button span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #0f172a;
+            transition: 0.3s ease;
+        }
+
+        /* Mobile Absolute Dropdown List Menu */
+        .nav-links {
+            display: none;
+            list-style: none;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background-color: #490707;
+            border-top: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 20px;
+        }
+
+        .nav-links li {
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff30b;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: block;
+        }
+
+        /* CSS-Only Menu Toggle Trigger Condition */
+        #menu-toggle:checked ~ .nav-links {
+            display: block;
+        }
+
+        /* HOME / HERO PAGE - Mobile First: Single Column */
+        .hero-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+
+        /* PROJECTS PAGE - Mobile First: 1 Column Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .card-img-placeholder {
+            height: 180px;
+            background-color: #cbd5e1;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        /* CONTACT PAGE - Mobile First: Full-Width Form */
+        .contact-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #31598b;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .submit-btn {
+            padding: 12px 24px;
+            background-color: #2563eb;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* =================================================================
+           3. TABLET BREAKPOINT (min-width: 768px)
+        ==================================================================== */
+        @media (min-width: 768px) {
+            /* PROJECTS PAGE - Shifts to 2 Columns */
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* =================================================================
+           4. DESKTOP BREAKPOINT (min-width: 1024px)
+        ==================================================================== */
+        @media (min-width: 1024px) {
+            /* NAVIGATION - Desktop Switch: Remake into Horizontal Bar Layout */
+            .menu-button {
+                display: none; /* Kill mobile toggle box layout elements */
+            }
+
+            .nav-links {
+                display: flex !important; /* Force render as permanent inline elements */
+                position: static;
+                width: auto;
+                box-shadow: none;
+                background: transparent;
+                border: none;
+                padding: 0;
+                gap: 30px;
+            }
+
+            .nav-links li {
+                margin: 0;
+            }
+
+            .nav-links a {
+                font-size: 1rem;
+            }
+
+            /* HOME PAGE - Shifts to Row Layout (Content Left, Image Right) */
+            .hero-layout {
+                flex-direction: row;
+                align-items: center;
+                text-align: left;
+                justify-content: space-between;
+            }
+
+            .hero-content {
+                flex: 1;
+                padding-right: 40px;
+            }
+
+            .hero-image-wrapper {
+                flex: 1;
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            /* PROJECTS PAGE - Shifts to 3 Columns */
+            .projects-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            /* CONTACT PAGE - Shifts to Form with a Right Sidebar Layout */
+            .contact-layout {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .contact-form {
+                flex: 2;
+            }
+
+            .contact-sidebar {
+                flex: 1;
+                padding-left: 60px;
+                border-left: 2px solid #e2e8f0;
+            }
+        }
+
+        /* =================================================================
+           5. LARGE DESKTOP BREAKPOINT (min-width: 1280px)
+        ==================================================================== */
+        @media (min-width: 1280px) {
+            .container {
+                max-width: 1200px; /* Locks main track scale precisely */
+            }
+            
+            .hero-content h1 {
+                font-size: 3rem; /* Scales font gracefully to utilize whitespace */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">Musatake Tech.</a>
+            
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section id="home">
+            <div class="hero-layout">
+                <div class="hero-content">
+                    <h1>Building Modern Scalable Digital Products</h1>
+                    <p>I am an web developer focused on crafting pixel-perfect, accessible front-ends along with incredibly fast and light backend architecture pipelines.</p>
+                </div>
+                <div class="hero-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=500" alt="Work Environment Studio">
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                
+                <article class="project-card">
+                    <div class="card-img-placeholder"></div>
+                    <div class="card-body">
+                        <h3>Project One</h3>
+                        <p>Fully fluid dashboard utility engine.</p>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="card-img-placeholder"></div>
+                    <div class="card-body">
+                        <h3>Project Two</h3>
+                        <p>Real-time telemetry event tracking backend.</p>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="card-img-placeholder"></div>
+                    <div class="card-body">
+                        <h3>Project Three</h3>
+                        <p>Automated static validation tool wrapper asset.</p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Let's Work Together</h2>
+            <div class="contact-layout">
+                
+                <form class="contact-form" onsubmit="event.preventDefault();">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Tell me about your project scope..." rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+
+                <aside class="contact-sidebar">
+                    <h3>Contact Information</h3>
+                    <p>Email: musatake074@gmail.com</p>
+                    <p>Location: Nairobi, Kenya</p>
+                    <p style="margin-top: 15px; color: #64748b;">Available for full-time roles and high-end contract consulting assignments.</p>
+                </aside>
+
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
