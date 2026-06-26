@@ -1,1 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Color System Practice</title>
+    <style>
+        /* 1. COLOR SYSTEM CONFIGURATION */
+        :root {
+            /* Base Palette */
+            --color-primary: #0284c7;     /* Vibrant Teal/Sky Blue */
+            --color-secondary: #f43f5e;   /* Energetic Coral/Rose Accent */
+            --color-background: #f8fafc;  /* Soft, clean off-white */
+            --color-text: #0f172a;        /* Deep slate for high-contrast reading */
+            --color-muted: #64748b;       /* Cool gray for secondary info */
+            
+            /* Variations */
+            --color-primary-light: #e0f2fe; /* Soft tint for backgrounds/alerts */
+            --color-primary-dark: #0369a1;  /* Darker shade for hover states */
+            --color-surface: #ffffff;       /* Pure white for cards/containers */
+        }
 
+        /* 2. GLOBAL RESET & BASE APPLY */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--color-background); /* Applied Background */
+            color: var(--color-text);                  /* Applied Body Text */
+            line-height: 1.6;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* 3. COMPONENT & ELEMENT STYLING */
+        .container {
+            max-width: 600px;
+            background-color: var(--color-surface);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05);
+        }
+
+        /* Applied Headings */
+        h1 {
+            color: var(--color-text);
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        h2 {
+            color: var(--color-text);
+            font-size: 1.25rem;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        /* Applied Muted/Gray text */
+        .subtitle {
+            color: var(--color-muted);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+        }
+
+        p {
+            margin-bottom: 16px;
+        }
+
+        /* Applied Links (with hover states) */
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--color-primary-dark);
+            text-decoration: underline;
+        }
+
+        /* Callout Box using Light variation */
+        .callout {
+            background-color: var(--color-primary-light);
+            color: var(--color-primary-dark);
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        /* Applied Buttons */
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        /* Primary Button */
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-surface);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-primary-dark);
+        }
+
+        /* Secondary Accent Button */
+        .btn-secondary {
+            background-color: var(--color-secondary);
+            color: var(--color-surface);
+        }
+
+        .btn-secondary:hover {
+            /* Fallback darken tweak if explicit secondary-dark isn't declared */
+            filter: brightness(0.9);
+        }
+    </style>
+</head>
+<body>
+
+    <main class="container">
+        <h1>Musatake Tech System Core</h1>
+       <p class="subtitle">Architecting lightning-fast cloud infrastructure and cognitive AI data pipelines.</p>
+
+      <div class="callout">
+    💡 <strong>System Alert:</strong> The Musatake monitoring framework utilizes the <code>--color-primary-light</code> utility token to flag optimized, active server nodes.
+      </div>
+
+      <h2>Interactive Modules & Documentation</h2>
+      <p>This terminal view acts as the telemetry node for your cluster. Engineers can safely test execution runtime paths alongside embedded links, such as the <a href="#">Musatake API Reference Schema</a>, to verify strict interface typing compliance rules across the network.</p>
+
+      <div class="btn-group">
+      <button class="btn btn-primary">Initialize Cluster</button>
+      <button class="btn btn-secondary">Deploy Microservices</button>
+      </div>
+    </main>
+
+</body>
+</html>
