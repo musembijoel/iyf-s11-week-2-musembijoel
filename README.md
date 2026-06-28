@@ -13,20 +13,17 @@ Build grid garden, card components, color scheme, mobile-friendly form,responsiv
 - CSS3
 
 
-your-repo/
+my-repo/
 
 ├── README.md          
 ├── colorscheme.html        
 ├── css-grid-layout.html
-
 ├── flexbox-layout.html       
 ├── gridgarden.html        
 ├── mobile-friendly.html
 ├── responsive-navigation.html   
-    
 ├── responsive-projectgrid.html        
 ├── topography-sytem.html       
-└── 
 
 ## How to Run
 1. Clone this repository
@@ -35,7 +32,7 @@ your-repo/
    Run `npm install` then `npm start`
 
 ## Lessons Learned
-What did you learn while building this project?
+What did
 
 ## Challenges Faced
 What problems did you encounter and how did you solve them?
