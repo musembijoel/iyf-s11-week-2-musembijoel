@@ -32,13 +32,10 @@ my-repo/
    Run `npm install` then `npm start`
 
 ## Lessons Learned
-What did
+I learned how to style HTML code with CSS.
 
 ## Challenges Faced
-What problems did you encounter and how did you solve them?
-
-## Screenshots (optional)
-![Screenshot description](path/to/screenshot.png)
+I had a challenge uploading the files to GitHub and upon asking for help from a classmate I was able to.
 
 ## Live Demo (if deployed)
 [View Live Demo](https://your-deployed-url.com
