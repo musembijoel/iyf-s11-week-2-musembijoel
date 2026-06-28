@@ -13,10 +13,11 @@ Build grid garden, card components, color scheme, mobile-friendly form,responsiv
 - CSS3
 
 
-## Features
-- Feature 1
-- Feature 2
-- Feature 3
+your-repo/
+├── README.md          # Required
+├── index.html         # Or appropriate main file
+├── CONTRIBUTORS.md    # Required for team projects only
+└── ... other files
 
 ## How to Run
 1. Clone this repository
