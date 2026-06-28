@@ -1,6 +1,4 @@
 # iyf-s11-week-2-musembijoel
-CSS mastery
-# Week {Number}: {Project Title}
 
 ## Author
 - **Name:** Joel Musembi Samwel
@@ -8,7 +6,7 @@ CSS mastery
 - **Date:** June 28th 2026.
 
 ## Project Description
-Build grid garden, card components 
+Build grid garden, card components, color scheme, mobile-friendly form,responsive-navigation, responsive-projectgrid, topography system, CSS grid layout and flexbox-layout
 
 ## Technologies Used
 - HTML5
