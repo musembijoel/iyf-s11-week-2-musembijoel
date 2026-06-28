@@ -14,10 +14,16 @@ Build grid garden, card components, color scheme, mobile-friendly form,responsiv
 
 
 your-repo/
-├── README.md          # Required
-├── index.html         # Or appropriate main file
-├── CONTRIBUTORS.md    # Required for team projects only
-└── ... other files
+├── README.md          
+├── colorscheme.html        
+├── css-grid-layout.html
+├── flexbox-layout.html       
+├── gridgarden.html        
+├── mobile-friendly.html
+├── responsive-navigation.html       
+├── responsive-projectgrid.html        
+├── topography-sytem.html       
+└── 
 
 ## How to Run
 1. Clone this repository
